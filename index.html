@@ -311,7 +311,7 @@ function sectionHTML(key){
 }
 
 function renderMain(){
-  const keys=filter==='all'?['shop','eat','drink','experience']:[filter];
+  const keys=filter==='all'?['shop','eat','night','experience']:[filter];
   document.getElementById('main').innerHTML=keys.map(sectionHTML).join('');
 }
 
@@ -338,7 +338,7 @@ function renderSaved(){
 function render(){renderMain();renderSaved();}
 
 document.querySelectorAll('.pill-btn[data-f]').forEach(b=>b.addEventListener('click',()=>setFilter(b.dataset.f)));
-document.getElementById('savedToggle').addEventListener('click',()=>document.getElementById('saved-section').scrollIntoView({behavior:'smooth'}));
+document.getElementById('savedToggle').addEventListener('click',()=>{ filter='all'; document.querySelectorAll('.pill-btn[data-f]').forEach(b=>b.classList.toggle('on',b.dataset.f==='all')); document.getElementById('saved-section').scrollIntoView({behavior:'smooth'}); });
 document.getElementById('overlay').addEventListener('click',closeSheet);
 render();
 </script>
