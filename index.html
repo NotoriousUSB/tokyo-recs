@@ -5,207 +5,382 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Matt & Bunny's Tokyo</title>
 <meta name="description" content="A private Tokyo guide Brian made for Matt & Bunny.">
-<meta name="theme-color" content="#0a0a0d">
+<meta name="theme-color" content="#09090c">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Tokyo Guide">
-<link rel="manifest" href="data:application/json,%7B%22name%22%3A%22Matt%20%26%20Bunny's%20Tokyo%22%2C%22short_name%22%3A%22Tokyo%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%230a0a0d%22%2C%22theme_color%22%3A%22%230a0a0d%22%7D">
+<link rel="manifest" href="data:application/json,%7B%22name%22%3A%22Matt%20%26%20Bunny's%20Tokyo%22%2C%22short_name%22%3A%22Tokyo%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%2309090c%22%2C%22theme_color%22%3A%22%2309090c%22%7D">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
---bg:#0a0a0d;
---bg2:#121219;
---panel:#16161f;
---panel2:#1d1d28;
---line:rgba(255,255,255,.07);
---line2:rgba(255,255,255,.12);
---text:#f6f3ee;
---muted:#b7b0a3;
---quiet:#7b756d;
---gold:#cda85a;
---goldSoft:rgba(205,168,90,.14);
---safeTop:env(safe-area-inset-top,0px);
---safeBottom:env(safe-area-inset-bottom,0px);
---safeLeft:env(safe-area-inset-left,0px);
---safeRight:env(safe-area-inset-right,0px);
---sans:'Inter',system-ui,-apple-system,sans-serif;
+  --bg:#09090c;
+  --surface:#111118;
+  --surface2:#17171f;
+  --border:rgba(255,255,255,.06);
+  --border2:rgba(255,255,255,.1);
+  --text:#f0ece4;
+  --sub:#a8a197;
+  --dim:#6b665e;
+  --accent:#c9a24d;
+  --accentBg:rgba(201,162,77,.1);
+  --safeT:env(safe-area-inset-top,0px);
+  --safeB:env(safe-area-inset-bottom,0px);
+  --safeL:env(safe-area-inset-left,0px);
+  --safeR:env(safe-area-inset-right,0px);
+  --sans:'Inter',system-ui,-apple-system,sans-serif;
+  --r:18px;
+  --rr:14px;
 }
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-body{font-family:var(--sans);background:radial-gradient(circle at top, #18151d 0%, #0f0f14 34%, #0a0a0d 100%);color:var(--text);line-height:1.45;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-a{text-decoration:none;color:inherit}button{font:inherit;border:none;background:none;color:inherit;cursor:pointer}img{display:block;max-width:100%;height:auto}
-.page{min-height:100vh;padding-bottom:100px}
-.shell{max-width:1120px;margin:0 auto;padding-left:calc(14px + var(--safeLeft));padding-right:calc(14px + var(--safeRight))}
-.hero{padding-top:calc(14px + var(--safeTop));padding-bottom:16px}
-.hero-card{position:relative;min-height:56svh;border-radius:28px;overflow:hidden;border:1px solid var(--line);background:#111216;box-shadow:0 28px 70px rgba(0,0,0,.32)}
-.hero-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.58) contrast(1.06) saturate(.88)}
-.hero-card::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,13,.12) 0%,rgba(10,10,13,.18) 24%,rgba(10,10,13,.9) 100%),radial-gradient(circle at 78% 18%,rgba(205,168,90,.16),transparent 22%)}
-.hero-content{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;min-height:56svh;padding:22px}
-.hero-kicker{font-size:11px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
-.hero-title{margin-top:12px;font-size:clamp(34px,11vw,78px);font-weight:900;line-height:.9;letter-spacing:-.07em;max-width:8ch}
-.hero-copy{margin-top:14px;max-width:34ch;font-size:15px;line-height:1.65;color:#e9e1d4}
-.hero-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}.hero-pill{padding:9px 11px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);font-size:11px;font-weight:700}
-.topbar{position:sticky;top:0;z-index:60;background:rgba(10,10,13,.86);backdrop-filter:blur(18px);border-top:1px solid rgba(255,255,255,.02);border-bottom:1px solid rgba(255,255,255,.05)}
-.topbar-inner{display:flex;gap:8px;align-items:center;overflow-x:auto;scrollbar-width:none;padding:10px 0}.topbar-inner::-webkit-scrollbar{display:none}
-.nav-btn,.saved-btn{flex:0 0 auto;padding:10px 14px;border-radius:999px;border:1px solid transparent;font-size:13px;font-weight:700;color:var(--quiet);white-space:nowrap;transition:.18s ease}
-.nav-btn.active,.saved-btn.active{background:var(--goldSoft);border-color:rgba(205,168,90,.24);color:var(--gold)}
-.saved-btn{margin-left:auto;position:relative}.badge{display:none;position:absolute;top:-4px;right:-3px;width:18px;height:18px;border-radius:50%;background:var(--gold);color:#111;font-size:10px;font-weight:900;line-height:18px;text-align:center}.badge.show{display:block}
-.intro{padding:16px 0 18px;display:grid;grid-template-columns:1.1fr .9fr;gap:12px}
-.panel{border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.02));border:1px solid var(--line);padding:16px}
-.panel-kicker{font-size:10px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
-.panel-title{font-size:24px;font-weight:900;letter-spacing:-.05em;line-height:1;max-width:12ch}
-.panel-copy{margin-top:10px;font-size:13px;line-height:1.7;color:var(--muted);max-width:40ch}
-.panel-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.panel-tag{padding:8px 10px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.06);font-size:11px;font-weight:700}
-.section{padding:18px 0 0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:12px}.section-title{font-size:24px;font-weight:900;letter-spacing:-.05em}.section-copy{max-width:34ch;font-size:13px;line-height:1.7;color:var(--muted)}
-.feature-card{position:relative;min-height:370px;border-radius:26px;overflow:hidden;border:1px solid var(--line);background:#111216;display:flex;align-items:flex-end;box-shadow:0 16px 34px rgba(0,0,0,.2)}
-.feature-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.68) contrast(1.05) saturate(.9)}
-.feature-card::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,8,11,.06) 0%,rgba(8,8,11,.16) 34%,rgba(8,8,11,.92) 100%)}
-.feature-body{position:relative;z-index:2;width:100%;padding:18px}.feature-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.feature-tag{font-size:10px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
-.save-btn{width:40px;height:40px;border-radius:999px;background:rgba(12,12,16,.5);border:1px solid rgba(255,255,255,.08);display:grid;place-items:center;backdrop-filter:blur(12px);flex:0 0 auto}.save-btn svg{width:17px;height:17px}.save-btn.saved{background:var(--goldSoft);border-color:rgba(205,168,90,.24);color:var(--gold)}
-.feature-title{margin-top:10px;font-size:clamp(26px,7vw,42px);font-weight:900;line-height:.92;letter-spacing:-.06em;max-width:10ch}.feature-meta{margin-top:8px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.68)}.feature-copy{margin-top:10px;max-width:34ch;font-size:14px;line-height:1.65;color:#e9e2d8}
-.feature-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-.action-btn{min-height:42px;padding:10px 14px;border-radius:14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);font-size:12px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;gap:8px}.action-btn svg{width:16px;height:16px}.action-btn.gold{background:var(--goldSoft);border-color:rgba(205,168,90,.24);color:var(--gold)}.action-btn.subtle{background:rgba(18,18,24,.52);backdrop-filter:blur(14px)}
-.cards-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px}
-.spot-card{display:flex;flex-direction:column;border-radius:22px;overflow:hidden;border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.02));min-width:0}
-.spot-media{position:relative;aspect-ratio:1/1.06;background:#111216;overflow:hidden}.spot-media img{width:100%;height:100%;object-fit:cover;filter:brightness(.82) contrast(1.04)}.spot-save{position:absolute;top:10px;right:10px;z-index:2}
-.spot-body{display:flex;flex-direction:column;gap:10px;padding:14px;min-width:0}.spot-name{font-size:20px;font-weight:900;letter-spacing:-.05em;line-height:1}.spot-meta{font-size:11px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--quiet)}.spot-copy{font-size:13px;line-height:1.6;color:var(--muted);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;min-height:3.9em}
-.spot-actions{display:grid;grid-template-columns:1fr auto auto;gap:8px;margin-top:auto}.spot-actions .action-btn{min-width:0;padding-left:12px;padding-right:12px}
-.saved-panel{margin-top:22px}.saved-list{display:grid;gap:10px;margin-top:14px}.saved-item{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px;border-radius:18px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05)}.saved-item-name{font-size:15px;font-weight:800}.saved-item-meta{margin-top:4px;font-size:11px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--quiet)}
-.empty{padding:18px;border-radius:18px;background:rgba(255,255,255,.025);border:1px dashed rgba(255,255,255,.08);font-size:14px;line-height:1.7;color:var(--muted)}
-.footer{padding:24px 0 0}.footer .panel-title{font-size:20px;max-width:15ch}
-.sheet-overlay{position:fixed;inset:0;background:rgba(0,0,0,.64);backdrop-filter:blur(8px);z-index:100;opacity:0;pointer-events:none;transition:opacity .18s ease}.sheet-overlay.open{opacity:1;pointer-events:auto}
-.sheet{position:fixed;left:0;right:0;bottom:0;z-index:101;transform:translateY(102%);transition:transform .2s ease;background:linear-gradient(180deg,#1a1a22,#111118);border-top-left-radius:28px;border-top-right-radius:28px;border-top:1px solid var(--line2);max-height:88svh;display:flex;flex-direction:column;padding-bottom:var(--safeBottom)}.sheet.open{transform:translateY(0)}
-.sheet-handle{width:42px;height:4px;border-radius:999px;background:rgba(255,255,255,.16);margin:10px auto 6px}.sheet-media{position:relative;aspect-ratio:16/10;overflow:hidden;background:#111}.sheet-media img{width:100%;height:100%;object-fit:cover;filter:brightness(.82) contrast(1.03)}.sheet-body{padding:16px 16px 22px;overflow:auto}.sheet-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.sheet-title{font-size:28px;font-weight:900;letter-spacing:-.06em;line-height:.92}.sheet-close{width:40px;height:40px;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);display:grid;place-items:center;color:var(--quiet);font-size:22px}.sheet-meta{margin-top:8px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--quiet)}.sheet-copy{margin-top:14px;font-size:15px;line-height:1.76;color:var(--muted)}.sheet-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.sheet-tag{padding:8px 10px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.06);font-size:11px;font-weight:700}.sheet-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
-@media (max-width: 920px){.intro{grid-template-columns:1fr}.cards-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width: 620px){.shell{padding-left:calc(12px + var(--safeLeft));padding-right:calc(12px + var(--safeRight))}.hero-card,.panel,.spot-card,.saved-item{border-radius:20px}.hero-card{min-height:52svh}.hero-content{min-height:52svh;padding:18px}.hero-title{font-size:clamp(34px,12vw,52px)}.hero-copy{font-size:14px}.feature-card{min-height:330px;border-radius:22px}.feature-body{padding:16px}.feature-title{font-size:30px}.cards-grid{grid-template-columns:1fr}.spot-media{aspect-ratio:16/10}.spot-body{padding:14px}.spot-name{font-size:22px}.spot-actions{grid-template-columns:1fr 1fr 1fr}.section-head{flex-direction:column;align-items:flex-start}.saved-item{flex-direction:column;align-items:flex-start}}
-@media (max-width: 420px){.action-btn{padding:10px 10px;font-size:11px}.feature-actions{display:grid;grid-template-columns:1fr 1fr}.feature-actions .action-btn:last-child{grid-column:1/-1}.spot-actions .action-btn{min-height:40px}.sheet-title{font-size:24px}}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+button{font:inherit;border:none;background:none;color:inherit;cursor:pointer}
+img{display:block;max-width:100%;height:auto}
+.page{min-height:100vh;min-height:100svh;padding-bottom:calc(80px + var(--safeB))}
+.wrap{max-width:540px;margin:0 auto;padding-left:calc(16px + var(--safeL));padding-right:calc(16px + var(--safeR))}
+
+/* ── Hero ── */
+.hero{padding:calc(16px + var(--safeT)) 0 0}
+.hero-img{position:relative;aspect-ratio:16/9;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
+.hero-img img{width:100%;height:100%;object-fit:cover;filter:brightness(.6) saturate(.85)}
+.hero-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(9,9,12,.92) 0%,transparent 60%)}
+.hero-over{position:absolute;bottom:0;left:0;right:0;padding:20px;z-index:2}
+.hero-kicker{font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
+.hero h1{margin-top:8px;font-size:28px;font-weight:900;letter-spacing:-.04em;line-height:1.05}
+.hero p{margin-top:8px;font-size:13px;line-height:1.6;color:var(--sub);max-width:36ch}
+
+/* ── Sticky nav ── */
+.topbar{position:sticky;top:0;z-index:60;background:rgba(9,9,12,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.topbar-scroll{display:flex;gap:6px;align-items:center;overflow-x:auto;scrollbar-width:none;padding:10px 0;-webkit-overflow-scrolling:touch}
+.topbar-scroll::-webkit-scrollbar{display:none}
+.pill-btn{flex:0 0 auto;padding:8px 14px;border-radius:999px;font-size:12px;font-weight:700;color:var(--dim);white-space:nowrap;border:1px solid transparent;transition:all .15s}
+.pill-btn.on{background:var(--accentBg);border-color:rgba(201,162,77,.2);color:var(--accent)}
+.pill-btn.saved-toggle{margin-left:auto;position:relative}
+.pill-btn .ct{display:inline-flex;align-items:center;justify-content:center;min-width:16px;height:16px;margin-left:6px;padding:0 5px;border-radius:999px;background:var(--accent);color:#111;font-size:9px;font-weight:900}
+.pill-btn .ct.hide{display:none}
+
+/* ── Section modules ── */
+.module{padding:28px 0 0}
+.mod-label{font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
+.mod-title{margin-top:6px;font-size:22px;font-weight:900;letter-spacing:-.04em;line-height:1.1}
+.mod-sub{margin-top:6px;font-size:13px;line-height:1.6;color:var(--sub);max-width:38ch}
+
+/* ── Best-of / ideal flow ── */
+.flow{padding:28px 0 0}
+.flow-list{margin-top:16px;display:flex;flex-direction:column;gap:2px}
+.flow-step{display:grid;grid-template-columns:36px 1fr;gap:12px;align-items:start;padding:14px 0;border-bottom:1px solid var(--border)}
+.flow-step:last-child{border-bottom:none}
+.flow-num{width:36px;height:36px;border-radius:50%;background:var(--surface2);border:1px solid var(--border2);display:grid;place-items:center;font-size:13px;font-weight:800;color:var(--accent)}
+.flow-text h4{font-size:15px;font-weight:800;letter-spacing:-.02em;line-height:1.2}
+.flow-text .where{margin-top:2px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.flow-text p{margin-top:4px;font-size:13px;line-height:1.55;color:var(--sub)}
+
+/* ── Cards (category grids) ── */
+.card-stack{margin-top:16px;display:flex;flex-direction:column;gap:12px}
+.card{display:grid;grid-template-columns:100px 1fr;gap:0;border-radius:var(--r);overflow:hidden;border:1px solid var(--border);background:var(--surface);cursor:pointer;-webkit-tap-highlight-color:transparent;transition:border-color .15s}
+.card:active{border-color:var(--border2)}
+.card-img{position:relative;min-height:120px}
+.card-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.78) saturate(.9)}
+.card-body{padding:14px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.card-body h4{font-size:16px;font-weight:800;letter-spacing:-.03em;line-height:1.15;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.card-body .loc{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.card-body .pitch{font-size:13px;line-height:1.5;color:var(--sub);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card-save{position:absolute;top:6px;right:6px;width:30px;height:30px;border-radius:50%;background:rgba(0,0,0,.45);backdrop-filter:blur(8px);display:grid;place-items:center;border:1px solid rgba(255,255,255,.08);z-index:2}
+.card-save svg{width:14px;height:14px}
+.card-save.on{background:var(--accentBg);border-color:rgba(201,162,77,.2);color:var(--accent)}
+
+/* ── Feature card (lead in each section) ── */
+.feat{position:relative;border-radius:var(--r);overflow:hidden;border:1px solid var(--border);aspect-ratio:4/3;cursor:pointer;-webkit-tap-highlight-color:transparent;margin-top:16px}
+.feat img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.55) saturate(.85)}
+.feat::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(9,9,12,.94) 0%,rgba(9,9,12,.2) 50%,transparent 100%)}
+.feat-body{position:absolute;bottom:0;left:0;right:0;padding:18px;z-index:2}
+.feat-body h3{font-size:24px;font-weight:900;letter-spacing:-.04em;line-height:1}
+.feat-body .loc{margin-top:4px;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.feat-body p{margin-top:8px;font-size:13px;line-height:1.55;color:var(--sub);max-width:32ch}
+.feat .card-save{top:12px;right:12px;width:36px;height:36px}
+.feat .card-save svg{width:16px;height:16px}
+
+/* ── Saved plan ── */
+.saved-section{padding:32px 0 0}
+.saved-list{margin-top:14px;display:flex;flex-direction:column;gap:8px}
+.saved-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 14px;border-radius:var(--rr);background:var(--surface);border:1px solid var(--border)}
+.saved-row .info h4{font-size:14px;font-weight:800;letter-spacing:-.02em}
+.saved-row .info .loc{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-top:2px}
+.saved-row .acts{display:flex;gap:6px;flex-shrink:0}
+.act{height:34px;padding:0 12px;border-radius:10px;font-size:11px;font-weight:700;display:inline-flex;align-items:center;gap:5px;border:1px solid var(--border2);background:var(--surface2);color:var(--sub)}
+.act svg{width:14px;height:14px}
+.act.gold{background:var(--accentBg);border-color:rgba(201,162,77,.2);color:var(--accent)}
+.empty-saved{padding:20px;border-radius:var(--rr);border:1px dashed var(--border2);font-size:13px;line-height:1.6;color:var(--dim);text-align:center}
+
+/* ── Footer ── */
+.foot{padding:36px 0 0}
+.foot-inner{padding:18px;border-radius:var(--r);background:var(--surface);border:1px solid var(--border)}
+.foot-inner p{font-size:13px;line-height:1.6;color:var(--dim)}
+.foot-inner p strong{color:var(--sub);font-weight:700}
+
+/* ── Detail sheet ── */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:100;opacity:0;pointer-events:none;transition:opacity .18s}
+.overlay.open{opacity:1;pointer-events:auto}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:101;transform:translateY(102%);transition:transform .22s ease;background:var(--surface);border-top-left-radius:24px;border-top-right-radius:24px;border-top:1px solid var(--border2);max-height:90svh;display:flex;flex-direction:column;padding-bottom:var(--safeB)}
+.sheet.open{transform:translateY(0)}
+.sheet-handle{width:36px;height:4px;border-radius:999px;background:rgba(255,255,255,.14);margin:8px auto}
+.sheet-img{aspect-ratio:16/9;overflow:hidden;background:var(--bg)}
+.sheet-img img{width:100%;height:100%;object-fit:cover;filter:brightness(.78)}
+.sheet-content{padding:18px;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.sheet-head{display:flex;justify-content:space-between;align-items:start;gap:12px}
+.sheet-head h3{font-size:24px;font-weight:900;letter-spacing:-.04em;line-height:1}
+.sheet-x{width:34px;height:34px;border-radius:50%;background:var(--surface2);border:1px solid var(--border);display:grid;place-items:center;color:var(--dim);font-size:20px;flex-shrink:0}
+.sheet-meta{margin-top:6px;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.sheet-desc{margin-top:14px;font-size:15px;line-height:1.7;color:var(--sub)}
+.sheet-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.sheet-tag{padding:6px 10px;border-radius:999px;background:var(--surface2);border:1px solid var(--border);font-size:11px;font-weight:700}
+.sheet-acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;padding-bottom:8px}
+.sheet-acts .act{height:40px;padding:0 16px;font-size:12px;border-radius:12px}
+
+/* ── Responsive ── */
+@media(min-width:440px){
+  .card{grid-template-columns:130px 1fr}
+  .card-img{min-height:140px}
+}
+@media(min-width:600px){
+  .wrap{max-width:600px}
+  .hero-img{aspect-ratio:2/1}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
 </style>
 </head>
 <body>
 <div class="page">
-  <section class="hero shell">
-    <div class="hero-card">
-      <img src="assets/dover-street-market-ginza.jpg" alt="Tokyo editorial hero image" loading="eager">
-      <div class="hero-content">
-        <div class="hero-kicker">Private guide by Brian</div>
-        <h1 class="hero-title">Tokyo for people with taste.</h1>
-        <p class="hero-copy">Good stores. Good meals. Good nights. Less tourist sludge, more places that actually feel worth the time.</p>
-        <div class="hero-pills">
-          <span class="hero-pill">18 spots</span>
-          <span class="hero-pill">Tap for details</span>
-          <span class="hero-pill">Save the hits</span>
-        </div>
+
+  <section class="hero wrap">
+    <div class="hero-img">
+      <img src="assets/shibuya-crossing-sky.jpg" alt="Tokyo" loading="eager">
+      <div class="hero-over">
+        <div class="hero-kicker">Brian's picks for Matt & Bunny</div>
+        <h1>Tokyo,<br>edited.</h1>
+        <p>18 places. No filler. Tap anything for the full take, save what sticks, and use this as the running plan once you land.</p>
       </div>
     </div>
   </section>
 
-  <div class="topbar">
-    <div class="shell topbar-inner">
-      <button class="nav-btn active" data-filter="all">All</button>
-      <button class="nav-btn" data-filter="shop">Shopping</button>
-      <button class="nav-btn" data-filter="eat">Eat</button>
-      <button class="nav-btn" data-filter="drink">Drink</button>
-      <button class="nav-btn" data-filter="experience">Experience</button>
-      <button class="saved-btn" id="saved-btn">Saved <span class="badge" id="saved-badge">0</span></button>
+  <nav class="topbar">
+    <div class="wrap topbar-scroll">
+      <button class="pill-btn on" data-f="all">All</button>
+      <button class="pill-btn" data-f="shop">Shop</button>
+      <button class="pill-btn" data-f="eat">Eat</button>
+      <button class="pill-btn" data-f="drink">Drink</button>
+      <button class="pill-btn" data-f="experience">Do</button>
+      <button class="pill-btn saved-toggle" id="savedToggle">Saved<span class="ct hide" id="savedCt">0</span></button>
     </div>
-  </div>
+  </nav>
 
-  <section class="shell intro">
-    <div class="panel">
-      <div class="panel-kicker">How to use it</div>
-      <h2 class="panel-title">Browse fast. Open what earns the tap.</h2>
-      <p class="panel-copy">Each section leads with one bigger pick, then drops into cleaner cards underneath. Tap any card for the full pitch, then save the ones worth keeping.</p>
-      <div class="panel-tags" id="quick-tags"></div>
-    </div>
-    <div class="panel">
-      <div class="panel-kicker">Saved</div>
-      <h2 class="panel-title" style="font-size:22px;max-width:14ch">Your short list stays in view.</h2>
-      <p class="panel-copy">Save from any card. The shortlist lives below so this still feels useful once you’re actually moving through the city.</p>
-      <div class="panel-tags" id="saved-preview"></div>
-    </div>
+  <section class="flow wrap" id="flow-section">
+    <div class="mod-label">Best of Tokyo</div>
+    <h2 class="mod-title">If you only have one day</h2>
+    <p class="mod-sub">The ideal arc from morning to late night. Every stop here is in the full list below — tap to see more.</p>
+    <div class="flow-list" id="flow-list"></div>
   </section>
 
-  <main class="shell" id="main"></main>
+  <main class="wrap" id="main"></main>
 
-  <section class="shell saved-panel panel" id="saved-panel">
-    <div class="panel-kicker">Saved plan</div>
-    <h2 class="panel-title" style="max-width:15ch">Your live shortlist for the day.</h2>
-    <p class="panel-copy">Open maps, keep only the winners, and use this as the running cut once the day starts taking shape.</p>
+  <section class="saved-section wrap" id="saved-section">
+    <div class="mod-label">Your plan</div>
+    <h2 class="mod-title">Saved spots</h2>
+    <p class="mod-sub">Hit the star on any card. Your shortlist lives here — pull it up when you're deciding where to go next.</p>
     <div class="saved-list" id="saved-list"></div>
   </section>
 
-  <footer class="shell footer">
-    <div class="panel">
-      <div class="panel-kicker">From Brian</div>
-      <h3 class="panel-title">Built for Matt & Bunny, not the internet.</h3>
-      <p class="panel-copy">Still needs more real venue images, but the layout is now actually behaving on mobile instead of exploding.</p>
+  <footer class="foot wrap">
+    <div class="foot-inner">
+      <p><strong>Built for you two, not the internet.</strong><br>This is a private page. Save it to your home screen and use it as a pocket guide. If something's wrong or missing, tell Brian.</p>
     </div>
   </footer>
+
 </div>
 
-<div class="sheet-overlay" id="sheet-overlay"></div>
+<div class="overlay" id="overlay"></div>
 <div class="sheet" id="sheet">
   <div class="sheet-handle"></div>
-  <div class="sheet-media" id="sheet-media"></div>
-  <div class="sheet-body" id="sheet-body"></div>
+  <div class="sheet-img" id="sheetImg"></div>
+  <div class="sheet-content" id="sheetContent"></div>
 </div>
 
 <script>
 const PLACES=[
-{id:1,name:"Kapital",loc:"Ebisu",cat:"shop",img:"assets/kapital.jpg",standfirst:"Start here if the trip has any fashion agenda at all.",desc:'Kapital is the stop that feels most like Tokyo rewriting Americana on its own terms. The Ebisu cluster is the move — better than trying to treat it like one quick errand.',tags:["Denim","Ebisu","Fashion"],maps:"Kapital+Ebisu+Tokyo+Japan"},
-{id:2,name:"NUBIAN",loc:"Harajuku & Shibuya PARCO",cat:"shop",img:"assets/nubian.jpg",standfirst:"Sharp, current, and not trying too hard.",desc:'If the mood is dark, directional, and a little aggressive, NUBIAN is the easy yes. Good mix of major names and the kind of labels you mostly find by being in Tokyo.',tags:["Streetwear","Avant-Garde","Harajuku"],maps:"NUBIAN+Harajuku+Jingumae+Tokyo"},
-{id:3,name:"GR8",loc:"Laforet Harajuku, 2F",cat:"shop",img:"assets/gr8.jpg",standfirst:"Loud in the way Tokyo should be loud.",desc:'GR8 is still one of the few shops that feels plugged directly into the city instead of just stocking the right brands. Worth it for the energy alone.',tags:["Hype","Harajuku","Fashion"],maps:"GR8+Laforet+Harajuku+Tokyo"},
-{id:4,name:"Dover Street Market Ginza",loc:"Ginza",cat:"shop",img:"assets/dover-street-market-ginza.jpg",standfirst:"The big polished fashion swing.",desc:'If you want one all-in shopping stop, make it this. Multiple floors, better pacing than most concept stores, and enough range to keep both of you interested.',tags:["Ginza","Concept Store","Fashion"],maps:"Dover+Street+Market+Ginza+Tokyo"},
-{id:5,name:"Omotesando Avenue",loc:"Omotesando / Aoyama",cat:"shop",img:"assets/omotesando-avenue.jpg",standfirst:"Walk it more than you shop it.",desc:'This is less about one store and more about the full mood: architecture, flagships, side streets, and a cleaner pace than Harajuku. Good daytime stretch.',tags:["Architecture","Flagships","Aoyama"],maps:"Omotesando+Hills+Tokyo"},
-{id:6,name:"Yoroniku",loc:"Minami-Aoyama",cat:"eat",img:"assets/yoroniku.jpg",standfirst:"If you want the serious beef dinner, do this.",desc:'One of the cleaner picks for a high-end yakiniku night. Harder reservation, but it actually feels worth building dinner around.',tags:["Yakiniku","Reservation","Date Night"],maps:"Yoroniku+Minami+Aoyama+Tokyo",book:"https://tabelog.com/en/tokyo/A1306/A130602/13128099/"},
-{id:7,name:"Yakiniku Ushigoro",loc:"Nishi-Azabu (+ Ginza, Shinjuku)",cat:"eat",img:"assets/yakiniku-ushigoro.jpg",standfirst:"Luxurious without feeling stiff.",desc:'A safer high-end yakiniku pick if you want something polished, private-room friendly, and easy to slot into a good night out.',tags:["Yakiniku","Private Room","Nishi-Azabu"],maps:"Yakiniku+Ushigoro+Nishiazabu+Tokyo",book:"https://www.ushigoro.com/en/"},
-{id:8,name:"Tofuya Ukai",loc:"Shibakoen",cat:"eat",img:"assets/tofuya-ukai.jpg",standfirst:"For when you want the meal to slow the whole day down.",desc:'A calmer, more atmospheric pick near Tokyo Tower. Less about spectacle, more about giving the day one slower, more distinctly Japanese turn.',tags:["Kaiseki","Garden","Tokyo Tower"],maps:"Tokyo+Shiba+Tofuya+Ukai",book:"https://www.ukai.co.jp/english/shiba/"},
-{id:9,name:"Omakase Sushi",loc:"Ginza / Roppongi",cat:"eat",img:"assets/omakase-sushi.jpg",standfirst:"The clean sushi counter move.",desc:'Less about a specific shop here and more about the format: small counter, chef-led pacing, no distractions. Good if you want one meal that feels precise.',tags:["Sushi","Counter","Ginza"],maps:"Ginza+Sushi+Omakase+Tokyo",book:"https://omakaseje.com/"},
-{id:10,name:"Totti Candy Factory",loc:"Harajuku / Takeshita",cat:"eat",img:"assets/totti-candy-factory.jpg",standfirst:"A chaotic sugar detour if you want one dumb fun stop.",desc:'Not profound. Just a good Harajuku reset when you want something silly, photogenic, and completely unserious.',tags:["Harajuku","Sugar","Fun"],maps:"Totti+Candy+Factory+Harajuku+Tokyo"},
-{id:11,name:"INITIAL",loc:"Omotesando",cat:"eat",img:"assets/initial.jpg",standfirst:"Dessert, but cleaner than the usual tourist trap version.",desc:'A useful Omotesando stop when you want something light, nice-looking, and easy to tack onto a shopping stretch without killing momentum.',tags:["Dessert","Omotesando","Parfait"],maps:"INITIAL+Omotesando+Jingumae+Tokyo"},
-{id:12,name:"New York Bar",loc:"Park Hyatt, 52F — Shinjuku",cat:"drink",img:"assets/new-york-bar.jpg",standfirst:"Touristy, yes. Still kind of perfect.",desc:'The skyline still lands. Best if you go knowing exactly what it is: a polished, cinematic Tokyo night move, not some secret local find.',tags:["Skyline","Cocktails","Shinjuku"],maps:"New+York+Bar+Park+Hyatt+Shinjuku+Tokyo",book:"https://restaurants.tokyo.park.hyatt.co.jp/en/newyorkbar/"},
-{id:13,name:"Bar Zoetrope",loc:"Shinjuku",cat:"drink",img:"assets/bar-zoetrope.jpg",standfirst:"Tiny room, good mood, better story.",desc:'This is the kind of late-night stop that makes Tokyo feel specific again after too many generic nice places. Small, atmospheric, worth the squeeze.',tags:["Whisky","Cinema","Small Bar"],maps:"Bar+Zoetrope+Nishi+Shinjuku+Tokyo"},
-{id:14,name:"Shibuya Crossing & Sky",loc:"Shibuya",cat:"experience",img:"assets/shibuya-crossing-sky.jpg",standfirst:"Do the obvious thing because the obvious thing actually works.",desc:'The crossing is chaos, Shibuya Sky is the payoff. Easy win if you time it near sunset and don’t overcomplicate it.',tags:["Shibuya","Sunset","Iconic"],maps:"Shibuya+Sky+Scramble+Square+Tokyo",book:"https://www.shibuya-scramble-square.com/sky/"},
-{id:15,name:"teamLab Borderless",loc:"Azabudai Hills",cat:"experience",img:"assets/teamlab-borderless.jpg",standfirst:"Big immersive hit, still worth doing once.",desc:'It is high-production and very self-aware, but if the goal is one major visual experience, this earns the slot better than most.',tags:["Immersive","Art","Azabudai"],maps:"teamLab+Borderless+Azabudai+Hills+Tokyo",book:"https://www.teamlab.art/e/borderless-azabudai/"},
-{id:16,name:"Meiji Jingū",loc:"Harajuku",cat:"experience",img:"assets/meiji-jingu.jpg",standfirst:"The easiest way to reset the tempo of the day.",desc:'Good after Harajuku, good before Harajuku, good whenever the trip needs one quieter hour that doesn’t feel wasted.',tags:["Shrine","Quiet","Walk"],maps:"Meiji+Jingu+Shrine+Harajuku+Tokyo"},
-{id:17,name:"Golden Gai",loc:"Shinjuku",cat:"experience",img:"assets/golden-gai.jpg",standfirst:"Messier, tighter, more fun than it should be.",desc:'Best approached with low expectations and a willingness to just drift a little. That’s usually when it becomes the story later.',tags:["Nightlife","Bars","Shinjuku"],maps:"Golden+Gai+Kabukicho+Shinjuku+Tokyo"},
-{id:18,name:"Art Archive Gallery",loc:"Shibuya",cat:"experience",img:"assets/art-archive-gallery-shibuya.jpg",standfirst:"A cleaner visual break in the middle of Shibuya.",desc:'Useful if the day needs one gallery stop that feels a little calmer and more considered than the rest of the neighborhood.',tags:["Gallery","Shibuya","Contemporary"],maps:"Art+Archive+Gallery+Shibuya+Tokyo"}
+{id:1,name:"Kapital",loc:"Ebisu",cat:"shop",img:"assets/kapital.jpg",pitch:"Start here if the trip has any fashion agenda at all.",desc:"Kapital is the stop that feels most like Tokyo rewriting Americana on its own terms. The Ebisu cluster is the move — better than trying to treat it like one quick errand. Give it time.",tags:["Denim","Ebisu","Fashion"],maps:"Kapital+Ebisu+Tokyo+Japan"},
+{id:2,name:"NUBIAN",loc:"Harajuku & Shibuya PARCO",cat:"shop",img:"assets/nubian.jpg",pitch:"Sharp, current, and not trying too hard.",desc:"If the mood is dark, directional, and a little aggressive, NUBIAN is the easy yes. Good mix of major names and the kind of labels you mostly find by being in Tokyo.",tags:["Streetwear","Avant-Garde","Harajuku"],maps:"NUBIAN+Harajuku+Jingumae+Tokyo"},
+{id:3,name:"GR8",loc:"Laforet Harajuku, 2F",cat:"shop",img:"assets/gr8.jpg",pitch:"Loud in the way Tokyo should be loud.",desc:"GR8 is still one of the few shops that feels plugged directly into the city instead of just stocking the right brands. Worth it for the energy alone.",tags:["Hype","Harajuku","Fashion"],maps:"GR8+Laforet+Harajuku+Tokyo"},
+{id:4,name:"Dover Street Market Ginza",loc:"Ginza",cat:"shop",img:"assets/dover-street-market-ginza.jpg",pitch:"The big polished fashion swing.",desc:"If you want one all-in shopping stop, make it this. Multiple floors, better pacing than most concept stores, and enough range to keep both of you interested.",tags:["Ginza","Concept Store","Fashion"],maps:"Dover+Street+Market+Ginza+Tokyo"},
+{id:5,name:"Omotesando Avenue",loc:"Omotesando / Aoyama",cat:"shop",img:"assets/omotesando-avenue.jpg",pitch:"Walk it more than you shop it.",desc:"This is less about one store and more about the full mood: architecture, flagships, side streets, and a cleaner pace than Harajuku. Good daytime stretch.",tags:["Architecture","Flagships","Aoyama"],maps:"Omotesando+Hills+Tokyo"},
+{id:6,name:"Yoroniku",loc:"Minami-Aoyama",cat:"eat",img:"assets/yoroniku.jpg",pitch:"The serious beef dinner.",desc:"One of the cleaner picks for a high-end yakiniku night. Harder reservation, but it actually feels worth building dinner around. Book early if you can.",tags:["Yakiniku","Reservation","Date Night"],maps:"Yoroniku+Minami+Aoyama+Tokyo",book:"https://tabelog.com/en/tokyo/A1306/A130602/13128099/"},
+{id:7,name:"Yakiniku Ushigoro",loc:"Nishi-Azabu (+ Ginza, Shinjuku)",cat:"eat",img:"assets/yakiniku-ushigoro.jpg",pitch:"Luxurious without feeling stiff.",desc:"A safer high-end yakiniku pick if you want something polished, private-room friendly, and easy to slot into a good night out.",tags:["Yakiniku","Private Room","Nishi-Azabu"],maps:"Yakiniku+Ushigoro+Nishiazabu+Tokyo",book:"https://www.ushigoro.com/en/"},
+{id:8,name:"Tofuya Ukai",loc:"Shibakoen",cat:"eat",img:"assets/tofuya-ukai.jpg",pitch:"When you want the meal to slow the whole day down.",desc:"A calmer, more atmospheric pick near Tokyo Tower. Less about spectacle, more about giving the day one slower, more distinctly Japanese turn. The garden alone is worth it.",tags:["Kaiseki","Garden","Tokyo Tower"],maps:"Tokyo+Shiba+Tofuya+Ukai",book:"https://www.ukai.co.jp/english/shiba/"},
+{id:9,name:"Omakase Sushi",loc:"Ginza / Roppongi",cat:"eat",img:"assets/omakase-sushi.jpg",pitch:"Small counter, chef-led pacing, no distractions.",desc:"Less about a specific shop and more about the format: omakase at a proper counter. Good if you want one meal that feels precise and unhurried.",tags:["Sushi","Counter","Ginza"],maps:"Ginza+Sushi+Omakase+Tokyo",book:"https://omakaseje.com/"},
+{id:10,name:"Totti Candy Factory",loc:"Harajuku / Takeshita",cat:"eat",img:"assets/totti-candy-factory.jpg",pitch:"The dumb fun sugar stop.",desc:"Not profound. Just a good Harajuku reset when you want something silly, photogenic, and completely unserious between real stops.",tags:["Harajuku","Sugar","Fun"],maps:"Totti+Candy+Factory+Harajuku+Tokyo"},
+{id:11,name:"INITIAL",loc:"Omotesando",cat:"eat",img:"assets/initial.jpg",pitch:"Dessert, done right.",desc:"A useful Omotesando stop when you want something light, nice-looking, and easy to tack onto a shopping stretch without killing momentum.",tags:["Dessert","Omotesando","Parfait"],maps:"INITIAL+Omotesando+Jingumae+Tokyo"},
+{id:12,name:"New York Bar",loc:"Park Hyatt, 52F — Shinjuku",cat:"drink",img:"assets/new-york-bar.jpg",pitch:"Touristy, yes. Still kind of perfect.",desc:"The skyline still lands. Best if you go knowing exactly what it is: a polished, cinematic Tokyo night move, not some secret local find. Order something strong and enjoy the view.",tags:["Skyline","Cocktails","Shinjuku"],maps:"New+York+Bar+Park+Hyatt+Shinjuku+Tokyo",book:"https://restaurants.tokyo.park.hyatt.co.jp/en/newyorkbar/"},
+{id:13,name:"Bar Zoetrope",loc:"Shinjuku",cat:"drink",img:"assets/bar-zoetrope.jpg",pitch:"Tiny room, good mood, better story.",desc:"The kind of late-night stop that makes Tokyo feel specific again after too many generic nice places. Small, atmospheric, worth the squeeze.",tags:["Whisky","Cinema","Small Bar"],maps:"Bar+Zoetrope+Nishi+Shinjuku+Tokyo"},
+{id:14,name:"Shibuya Crossing & Sky",loc:"Shibuya",cat:"experience",img:"assets/shibuya-crossing-sky.jpg",pitch:"The obvious thing, because it actually works.",desc:"The crossing is chaos, Shibuya Sky is the payoff. Easy win if you time it near sunset and don't overcomplicate it.",tags:["Shibuya","Sunset","Iconic"],maps:"Shibuya+Sky+Scramble+Square+Tokyo",book:"https://www.shibuya-scramble-square.com/sky/"},
+{id:15,name:"teamLab Borderless",loc:"Azabudai Hills",cat:"experience",img:"assets/teamlab-borderless.jpg",pitch:"Big immersive hit, still earns the slot.",desc:"High-production and self-aware, but if the goal is one major visual experience, this delivers better than most. Book ahead — it sells out.",tags:["Immersive","Art","Azabudai"],maps:"teamLab+Borderless+Azabudai+Hills+Tokyo",book:"https://www.teamlab.art/e/borderless-azabudai/"},
+{id:16,name:"Meiji Jingū",loc:"Harajuku",cat:"experience",img:"assets/meiji-jingu.jpg",pitch:"The easiest way to reset the tempo.",desc:"Good after Harajuku, good before Harajuku, good whenever the trip needs one quieter hour that doesn't feel wasted. Just walk slowly.",tags:["Shrine","Quiet","Walk"],maps:"Meiji+Jingu+Shrine+Harajuku+Tokyo"},
+{id:17,name:"Golden Gai",loc:"Shinjuku",cat:"experience",img:"assets/golden-gai.jpg",pitch:"Messier, tighter, more fun than it should be.",desc:"Best approached with low expectations and a willingness to just drift. That's usually when it becomes the story you keep telling later.",tags:["Nightlife","Bars","Shinjuku"],maps:"Golden+Gai+Kabukicho+Shinjuku+Tokyo"},
+{id:18,name:"Art Archive Gallery",loc:"Shibuya",cat:"experience",img:"assets/art-archive-gallery-shibuya.jpg",pitch:"A quieter visual break in Shibuya.",desc:"Useful if the day needs one gallery stop that feels calmer and more considered than the rest of the neighborhood.",tags:["Gallery","Shibuya","Contemporary"],maps:"Art+Archive+Gallery+Shibuya+Tokyo"}
 ];
-const SECTION_META={shop:{title:'Shopping',copy:'The stores worth changing the route for.',feature:4},eat:{title:'Eat',copy:'Big meals, sweet hits, and places worth booking.',feature:8},drink:{title:'Drink',copy:'Skyline nights and small rooms with real atmosphere.',feature:12},experience:{title:'Experience',copy:'The iconic stuff, plus the atmospheric reset buttons.',feature:14}};
-const STAR_EMPTY='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>';
-const STAR_FILLED='<svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.8"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>';
-const MAP_ICON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>';
-const SHARE_ICON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>';
-const BOOK_ICON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>';
+
+const IDEAL_DAY=[
+  {id:16,note:"Start with the shrine while the city's still waking up. Quiet, green, grounding."},
+  {id:5,note:"Walk Omotesando for the architecture and flagships. Coffee at INITIAL if you need a break."},
+  {id:4,note:"Dover Street Market — the one shopping stop that covers the most ground."},
+  {id:8,note:"Long lunch at Tofuya Ukai. The garden, the pace, the tofu. Let the day slow down."},
+  {id:14,note:"Shibuya Sky near sunset for the full skyline. Crossing chaos on the way out."},
+  {id:6,note:"Dinner at Yoroniku — book ahead. This is the meal."},
+  {id:12,note:"New York Bar for one last drink 52 floors up. Yes, it's the Lost in Translation bar. Still works."},
+  {id:17,note:"Golden Gai to close it out. Drift. See what happens."}
+];
+
+const SEC={
+  shop:{title:"Shop",sub:"The stores worth changing the route for."},
+  eat:{title:"Eat",sub:"Big meals, sweet stops, and a few worth booking ahead."},
+  drink:{title:"Drink",sub:"One skyline, one tiny room. Both essential."},
+  experience:{title:"Do",sub:"The iconic stuff and the atmospheric reset buttons."}
+};
+
+const FEAT_IDS={shop:4,eat:8,drink:12,experience:14};
+
+const IC={
+  star:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>',
+  starOn:'<svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>',
+  map:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>',
+  share:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>',
+  link:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>'
+};
+
 let saved=JSON.parse(localStorage.getItem('tokyo-saved')||'[]');
-let activeFilter='all';
-let currentPlace=null;
-function isIOS(){return /iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)}
-function getMapsURL(query){return isIOS()?`https://maps.apple.com/?q=${query}`:`https://www.google.com/maps/search/${query}`}
-function clean(text){return text.replace(/<[^>]+>/g,'')}
-function isSaved(id){return saved.includes(id)}
-function toggleSave(id){saved=isSaved(id)?saved.filter(v=>v!==id):[...saved,id];localStorage.setItem('tokyo-saved',JSON.stringify(saved));renderAll();if(currentPlace&&currentPlace.id===id)openSheet(currentPlace)}
-function updateBadge(){const badge=document.getElementById('saved-badge');badge.textContent=saved.length;badge.classList.toggle('show',saved.length>0)}
-function sharePlace(place){const text=`${place.name} — ${place.loc}\n${getMapsURL(place.maps)}`;if(navigator.share){navigator.share({title:place.name,text}).catch(()=>{})}else{navigator.clipboard.writeText(text).catch(()=>{})}}
-function setFilter(filter,scroll=true){activeFilter=filter;document.querySelectorAll('.nav-btn').forEach(btn=>btn.classList.toggle('active',btn.dataset.filter===filter));renderMain();if(scroll){window.scrollTo({top:document.querySelector('.intro').offsetTop-10,behavior:'smooth'})}}
-function openSheet(place){currentPlace=place;document.getElementById('sheet-media').innerHTML=`<img src="${place.img}" alt="${place.name}">`;document.getElementById('sheet-body').innerHTML=`<div class="sheet-head"><div><h3 class="sheet-title">${place.name}</h3><div class="sheet-meta">${place.loc} · ${place.cat}</div></div><button class="sheet-close" onclick="closeSheet()">&times;</button></div><p class="sheet-copy">${clean(place.desc)}</p><div class="sheet-tags">${place.tags.map(tag=>`<span class="sheet-tag">${tag}</span>`).join('')}</div><div class="sheet-actions"><button class="action-btn ${isSaved(place.id)?'gold':''}" onclick="toggleSave(${place.id})">${isSaved(place.id)?STAR_FILLED:STAR_EMPTY}${isSaved(place.id)?'Saved':'Save'}</button><a class="action-btn subtle" href="${getMapsURL(place.maps)}" target="_blank" rel="noopener">${MAP_ICON}Map</a>${place.book?`<a class="action-btn subtle" href="${place.book}" target="_blank" rel="noopener">${BOOK_ICON}Book</a>`:''}<button class="action-btn subtle" onclick='sharePlace(${JSON.stringify(place).replace(/'/g,"&apos;")})'>${SHARE_ICON}Share</button></div>`;document.getElementById('sheet-overlay').classList.add('open');document.getElementById('sheet').classList.add('open')}
-function closeSheet(){document.getElementById('sheet-overlay').classList.remove('open');document.getElementById('sheet').classList.remove('open');currentPlace=null}
-function featureCard(place){return `<article class="feature-card"><img src="${place.img}" alt="${place.name}" loading="lazy"><div class="feature-body"><div class="feature-top"><div class="feature-tag">${place.cat}</div><button class="save-btn ${isSaved(place.id)?'saved':''}" onclick="toggleSave(${place.id})">${isSaved(place.id)?STAR_FILLED:STAR_EMPTY}</button></div><h3 class="feature-title">${place.name}</h3><div class="feature-meta">${place.loc}</div><p class="feature-copy">${clean(place.desc)}</p><div class="feature-actions"><button class="action-btn subtle" onclick="openSheetById(${place.id})">Details</button><a class="action-btn subtle" href="${getMapsURL(place.maps)}" target="_blank" rel="noopener">${MAP_ICON}Map</a>${place.book?`<a class="action-btn subtle" href="${place.book}" target="_blank" rel="noopener">${BOOK_ICON}Book</a>`:''}</div></div></article>`}
-function spotCard(place){return `<article class="spot-card"><div class="spot-media" onclick="openSheetById(${place.id})"><img src="${place.img}" alt="${place.name}" loading="lazy"><button class="save-btn spot-save ${isSaved(place.id)?'saved':''}" onclick="event.stopPropagation();toggleSave(${place.id})">${isSaved(place.id)?STAR_FILLED:STAR_EMPTY}</button></div><div class="spot-body"><h4 class="spot-name">${place.name}</h4><div class="spot-meta">${place.loc}</div><p class="spot-copy">${place.standfirst} ${clean(place.desc)}</p><div class="spot-actions"><button class="action-btn subtle" onclick="openSheetById(${place.id})">Details</button><a class="action-btn subtle" href="${getMapsURL(place.maps)}" target="_blank" rel="noopener">${MAP_ICON}</a>${place.book?`<a class="action-btn subtle" href="${place.book}" target="_blank" rel="noopener">${BOOK_ICON}</a>`:`<button class="action-btn subtle" onclick='sharePlace(${JSON.stringify(place).replace(/'/g,"&apos;")})'>${SHARE_ICON}</button>`}</div></div></article>`}
-function sectionMarkup(key){const places=PLACES.filter(p=>p.cat===key);const feature=places.find(p=>p.id===SECTION_META[key].feature)||places[0];const rest=places.filter(p=>p.id!==feature.id);return `<section class="section"><div class="section-head"><div><div class="panel-kicker">${SECTION_META[key].title}</div><h2 class="section-title">${SECTION_META[key].title}</h2></div><p class="section-copy">${SECTION_META[key].copy}</p></div>${featureCard(feature)}<div class="cards-grid">${rest.map(spotCard).join('')}</div></section>`}
-function renderMain(){const keys=activeFilter==='all'?['shop','eat','drink','experience']:[activeFilter];document.getElementById('main').innerHTML=keys.map(sectionMarkup).join('')}
-function renderQuickTags(){document.getElementById('quick-tags').innerHTML=['shop','eat','drink','experience'].map(key=>`<button class="panel-tag" onclick="setFilter('${key}')">${SECTION_META[key].title}</button>`).join('')}
-function renderSavedPreview(){const el=document.getElementById('saved-preview');if(!saved.length){el.innerHTML='<span class="panel-tag">Nothing saved yet</span>';return}el.innerHTML=saved.slice(0,4).map(id=>{const p=PLACES.find(v=>v.id===id);return p?`<span class="panel-tag">${p.name}</span>`:''}).join('')}
-function renderSavedList(){const el=document.getElementById('saved-list');if(!saved.length){el.innerHTML='<div class="empty">Save places from any card and they’ll collect here as your shortlist.</div>';return}const items=saved.map(id=>PLACES.find(p=>p.id===id)).filter(Boolean);el.innerHTML=items.map(place=>`<div class="saved-item"><div><div class="saved-item-name">${place.name}</div><div class="saved-item-meta">${place.loc}</div></div><div class="feature-actions"><a class="action-btn subtle" href="${getMapsURL(place.maps)}" target="_blank" rel="noopener">${MAP_ICON}Map</a>${place.book?`<a class="action-btn subtle" href="${place.book}" target="_blank" rel="noopener">${BOOK_ICON}Book</a>`:''}<button class="action-btn gold" onclick="toggleSave(${place.id})">${STAR_FILLED}Saved</button></div></div>`).join('')}
-function openSheetById(id){const place=PLACES.find(p=>p.id===id);if(place)openSheet(place)}
-function renderAll(){updateBadge();renderQuickTags();renderMain();renderSavedPreview();renderSavedList()}
-document.querySelectorAll('.nav-btn').forEach(btn=>btn.addEventListener('click',()=>setFilter(btn.dataset.filter)));
-document.getElementById('saved-btn').addEventListener('click',()=>document.getElementById('saved-panel').scrollIntoView({behavior:'smooth',block:'start'}));
-document.getElementById('sheet-overlay').addEventListener('click',closeSheet);
-renderAll();
+let filter='all';
+let cur=null;
+
+const iOS=/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+const mapsUrl=q=>iOS?`https://maps.apple.com/?q=${q}`:`https://www.google.com/maps/search/${q}`;
+const has=id=>saved.includes(id);
+
+function toggle(id,e){
+  if(e)e.stopPropagation();
+  saved=has(id)?saved.filter(v=>v!==id):[...saved,id];
+  localStorage.setItem('tokyo-saved',JSON.stringify(saved));
+  render();
+  if(cur&&cur.id===id)openSheet(cur);
+}
+
+function share(p){
+  const t=`${p.name} — ${p.loc}\n${mapsUrl(p.maps)}`;
+  if(navigator.share)navigator.share({title:p.name,text:t}).catch(()=>{});
+  else navigator.clipboard.writeText(t).catch(()=>{});
+}
+
+function openSheet(p){
+  cur=p;
+  document.getElementById('sheetImg').innerHTML=`<img src="${p.img}" alt="${p.name}">`;
+  document.getElementById('sheetContent').innerHTML=`
+    <div class="sheet-head"><div><h3>${p.name}</h3><div class="sheet-meta">${p.loc} · ${p.cat}</div></div><button class="sheet-x" onclick="closeSheet()">&times;</button></div>
+    <p class="sheet-desc">${p.desc}</p>
+    <div class="sheet-tags">${p.tags.map(t=>`<span class="sheet-tag">${t}</span>`).join('')}</div>
+    <div class="sheet-acts">
+      <button class="act ${has(p.id)?'gold':''}" onclick="toggle(${p.id})">${has(p.id)?IC.starOn:IC.star}${has(p.id)?'Saved':'Save'}</button>
+      <a class="act" href="${mapsUrl(p.maps)}" target="_blank" rel="noopener">${IC.map}Map</a>
+      ${p.book?`<a class="act" href="${p.book}" target="_blank" rel="noopener">${IC.link}Book</a>`:''}
+      <button class="act" onclick='share(PLACES.find(x=>x.id===${p.id}))'>${IC.share}Share</button>
+    </div>`;
+  document.getElementById('overlay').classList.add('open');
+  document.getElementById('sheet').classList.add('open');
+}
+
+function closeSheet(){
+  document.getElementById('overlay').classList.remove('open');
+  document.getElementById('sheet').classList.remove('open');
+  cur=null;
+}
+
+function setFilter(f){
+  filter=f;
+  document.querySelectorAll('.pill-btn[data-f]').forEach(b=>b.classList.toggle('on',b.dataset.f===f));
+  const flow=document.getElementById('flow-section');
+  flow.style.display=f==='all'?'':'none';
+  renderMain();
+}
+
+function featHTML(p){
+  return `<article class="feat" onclick="openSheet(PLACES.find(x=>x.id===${p.id}))">
+    <img src="${p.img}" alt="${p.name}" loading="lazy">
+    <button class="card-save ${has(p.id)?'on':''}" onclick="toggle(${p.id},event)">${has(p.id)?IC.starOn:IC.star}</button>
+    <div class="feat-body"><h3>${p.name}</h3><div class="loc">${p.loc}</div><p>${p.pitch}</p></div>
+  </article>`;
+}
+
+function cardHTML(p){
+  return `<article class="card" onclick="openSheet(PLACES.find(x=>x.id===${p.id}))">
+    <div class="card-img"><img src="${p.img}" alt="${p.name}" loading="lazy"><button class="card-save ${has(p.id)?'on':''}" onclick="toggle(${p.id},event)">${has(p.id)?IC.starOn:IC.star}</button></div>
+    <div class="card-body"><h4>${p.name}</h4><div class="loc">${p.loc}</div><p class="pitch">${p.pitch}</p></div>
+  </article>`;
+}
+
+function sectionHTML(key){
+  const all=PLACES.filter(p=>p.cat===key);
+  const featId=FEAT_IDS[key];
+  const feat=all.find(p=>p.id===featId)||all[0];
+  const rest=all.filter(p=>p.id!==feat.id);
+  return `<section class="module">
+    <div class="mod-label">${SEC[key].title}</div>
+    <h2 class="mod-title">${SEC[key].title}</h2>
+    <p class="mod-sub">${SEC[key].sub}</p>
+    ${featHTML(feat)}
+    <div class="card-stack">${rest.map(cardHTML).join('')}</div>
+  </section>`;
+}
+
+function renderFlow(){
+  document.getElementById('flow-list').innerHTML=IDEAL_DAY.map((step,i)=>{
+    const p=PLACES.find(x=>x.id===step.id);
+    return `<div class="flow-step" style="cursor:pointer" onclick="openSheet(PLACES.find(x=>x.id===${p.id}))">
+      <div class="flow-num">${i+1}</div>
+      <div class="flow-text"><h4>${p.name}</h4><div class="where">${p.loc}</div><p>${step.note}</p></div>
+    </div>`;
+  }).join('');
+}
+
+function renderMain(){
+  const keys=filter==='all'?['shop','eat','drink','experience']:[filter];
+  document.getElementById('main').innerHTML=keys.map(sectionHTML).join('');
+}
+
+function renderSaved(){
+  const el=document.getElementById('saved-list');
+  const ct=document.getElementById('savedCt');
+  ct.textContent=saved.length;
+  ct.classList.toggle('hide',saved.length===0);
+  if(!saved.length){el.innerHTML='<div class="empty-saved">Tap the star on any place to start building your plan.</div>';return;}
+  el.innerHTML=saved.map(id=>{
+    const p=PLACES.find(x=>x.id===id);
+    if(!p)return '';
+    return `<div class="saved-row">
+      <div class="info"><h4>${p.name}</h4><div class="loc">${p.loc}</div></div>
+      <div class="acts">
+        <a class="act" href="${mapsUrl(p.maps)}" target="_blank" rel="noopener">${IC.map}</a>
+        ${p.book?`<a class="act" href="${p.book}" target="_blank" rel="noopener">${IC.link}</a>`:''}
+        <button class="act gold" onclick="toggle(${p.id})">${IC.starOn}</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function render(){renderFlow();renderMain();renderSaved();}
+
+document.querySelectorAll('.pill-btn[data-f]').forEach(b=>b.addEventListener('click',()=>setFilter(b.dataset.f)));
+document.getElementById('savedToggle').addEventListener('click',()=>document.getElementById('saved-section').scrollIntoView({behavior:'smooth'}));
+document.getElementById('overlay').addEventListener('click',closeSheet);
+render();
 </script>
 </body>
 </html>
