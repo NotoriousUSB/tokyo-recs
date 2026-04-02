@@ -371,6 +371,11 @@ function render(){
   renderChapter('night-cards',[12,17,14,15],true);
   renderDirectory();
   renderSaved();
+
+  if (window.location.hash === '#ch-saved') {
+    history.replaceState(null, '', window.location.pathname + window.location.search);
+  }
+  window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
 }
 
 document.getElementById('overlay').addEventListener('click',closeSheet);
