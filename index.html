@@ -291,8 +291,9 @@ function toggle(id,e){
   if(e){e.stopPropagation();e.preventDefault();}
   saved=has(id)?saved.filter(v=>v!==id):[...saved,id];
   localStorage.setItem('tokyo-saved',JSON.stringify(saved));
-  render();
-  if(cur&&cur.id===id)openSheet(cur);
+  const active=cur&&cur.id===id?P.find(x=>x.id===id):null;
+  render(false);
+  if(active)openSheet(active);
 }
 
 function share(p){
